@@ -50,7 +50,7 @@ export const company = {
   location: "Bhilai, Chhattisgarh, India",
   address:
     "Mouja Jamul PHN 18/01, Near Rail Engineering Park, Shivpuri Jamul, Hathkhoj, Bhilai, Dist-Durg, Chhattisgarh 490024",
-  emailPrimary: "atulittechnology@yahoo.com",
+  emailPrimary: "atulittechno@gmail.com",
   emailSecondary: "atulittechno@gmail.com",
 } as const;
 

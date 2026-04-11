@@ -130,9 +130,6 @@ export function ContactForm() {
         <Button className="submit-button" disabled={isSubmitting} type="submit">
           {isSubmitting ? "Sending..." : "Send inquiry"}
         </Button>
-        <p className="form-note">
-          Submission is configured to reach your email and Google Sheet together.
-        </p>
       </div>
 
       {status.message ? (

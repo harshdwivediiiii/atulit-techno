@@ -18,6 +18,7 @@ import {
 import { ModeToggle } from "@/components/mode-toggle";
 import { Reveal } from "@/components/reveal";
 import { ContactForm } from "@/components/contact-form";
+import { MobileNav } from "@/components/mobile-nav";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
             <span className="brand-subtitle">Steel fabrication partner</span>
           </span>
         </a>
+        {/* Desktop nav */}
         <nav className="nav" aria-label="Primary">
           {navItems.map((item) => (
             <a key={item.href} href={item.href}>
@@ -37,11 +39,17 @@ export default function Home() {
             </a>
           ))}
         </nav>
-        <div className="topbar-actions">
+        {/* Desktop actions */}
+        <div className="topbar-actions desktop-actions">
           <ModeToggle />
           <a className="nav-cta" href={`mailto:${company.emailPrimary}`}>
             Email us
           </a>
+        </div>
+        {/* Mobile right cluster */}
+        <div className="topbar-actions mobile-actions">
+          <ModeToggle />
+          <MobileNav />
         </div>
       </header>
 
@@ -288,7 +296,7 @@ export default function Home() {
         <Reveal id="contact" className="section contact-section">
           <div className="section-heading">
             <p className="eyebrow">Contact</p>
-            <h2>Share your requirement once, and send it to email plus Google Sheets.</h2>
+            <h2>Share your requirement once</h2>
             <p>
               Share your fabrication requirement, drawing package, or delivery
               timeline through the form below. Each submission is designed to be
