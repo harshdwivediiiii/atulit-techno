@@ -16,56 +16,49 @@ function validate(payload: ContactPayload) {
   if (!payload.name || !payload.phone || !payload.address || !payload.details) {
     return "All fields are required.";
   }
-
   if (payload.details.length < 10) {
     return "Please enter a few more details about the inquiry.";
   }
-
   return null;
 }
 
 async function sendEmail(payload: ContactPayload) {
-  const {
-    SMTP_HOST,
-    SMTP_PORT,
-    SMTP_USER,
-    SMTP_PASS,
-    CONTACT_TO_EMAIL,
-  } = process.env;
+  const { SMTP_USER, SMTP_PASS, CONTACT_TO_EMAIL } = process.env;
 
-  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_TO_EMAIL) {
+  if (!SMTP_USER || !SMTP_PASS || !CONTACT_TO_EMAIL) {
     throw new Error("Email configuration missing in environment variables.");
   }
 
-  // ✅ Correct transporter config
   const transporter = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: Number(SMTP_PORT),
-    secure: false, // IMPORTANT for 587
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
     auth: {
       user: SMTP_USER,
       pass: SMTP_PASS,
     },
+    tls: {
+      rejectUnauthorized: false,
+    },
   });
 
-  const text = `
-New Atulit Technology Inquiry
+  await transporter.verify().catch((err) => {
+    throw new Error(`SMTP connection failed: ${err.message}`);
+  });
 
-Name: ${payload.name}
-Phone: ${payload.phone}
-Address: ${payload.address}
-
-Details:
-${payload.details}
-`;
-
-  // ✅ Send email
   await transporter.sendMail({
-    from: SMTP_USER, // MUST match Gmail account
+    from: `"Atulit Technology" <${SMTP_USER}>`,
     to: CONTACT_TO_EMAIL,
     replyTo: SMTP_USER,
     subject: `New inquiry from ${payload.name}`,
-    text,
+    text: `
+New Atulit Technology Inquiry
+Name: ${payload.name}
+Phone: ${payload.phone}
+Address: ${payload.address}
+Details:
+${payload.details}
+    `,
     html: `
       <h2>New Atulit Technology Inquiry</h2>
       <p><strong>Name:</strong> ${payload.name}</p>
@@ -81,14 +74,13 @@ async function sendToGoogleSheets(payload: ContactPayload) {
   const { GOOGLE_SHEETS_WEBHOOK_URL } = process.env;
 
   if (!GOOGLE_SHEETS_WEBHOOK_URL) {
-    throw new Error("Google Sheets webhook not configured.");
+    console.warn("Google Sheets webhook not configured.");
+    return;
   }
 
   const response = await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       ...payload,
       submittedAt: new Date().toISOString(),
@@ -98,7 +90,7 @@ async function sendToGoogleSheets(payload: ContactPayload) {
   });
 
   if (!response.ok) {
-    throw new Error("Failed to send data to Google Sheets.");
+    throw new Error(`Google Sheets error: ${response.status}`);
   }
 }
 
@@ -118,11 +110,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: error }, { status: 400 });
     }
 
-    // ✅ Run both in parallel
-    await Promise.all([
-      sendEmail(payload),
-      sendToGoogleSheets(payload),
-    ]);
+    await sendEmail(payload);
+    await sendToGoogleSheets(payload);
 
     return NextResponse.json({
       success: true,
@@ -131,7 +120,6 @@ export async function POST(request: Request) {
 
   } catch (error) {
     console.error("CONTACT API ERROR:", error);
-
     return NextResponse.json(
       {
         message:
