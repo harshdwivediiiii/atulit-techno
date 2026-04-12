@@ -48,7 +48,6 @@ export default function Home() {
         </div>
         {/* Mobile right cluster */}
         <div className="topbar-actions mobile-actions">
-          <ModeToggle />
           <MobileNav />
         </div>
       </header>
