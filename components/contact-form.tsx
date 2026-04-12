@@ -53,7 +53,7 @@ export function ContactForm() {
       setStatus({
         type: "success",
         message:
-          "Inquiry sent successfully. It has been forwarded to your email and Google Sheet.",
+          "Inquiry sent successfully.",
       });
     } catch (error) {
       const message =
