@@ -24,8 +24,8 @@ export default function Home() {
   return (
     <div className="site-shell">
       <header className="topbar">
-        <a className="brand" href="#top" aria-label="Atulit Technology homepage">
-          <span className="brand-mark">AT</span>
+        <a className="brand" href="/" aria-label="Atulit Technology homepage">
+          <img src="/logo.png" alt="Atulit Technology" className="w-10 h-10 object-contain drop-shadow-sm" />
           <span>
             <strong>{company.shortName}</strong>
             <span className="brand-subtitle">Steel fabrication partner</span>

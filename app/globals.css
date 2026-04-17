@@ -1,27 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f3efe6;
-  --foreground: #13161c;
-  --muted: #5f6876;
-  --surface: rgba(255, 252, 246, 0.88);
-  --surface-soft: rgba(18, 24, 33, 0.05);
-  --border: rgba(19, 22, 28, 0.1);
-  --accent: #a6681d;
-  --accent-strong: #c67d24;
-  --shadow: 0 24px 80px rgba(74, 52, 24, 0.14);
+  --background: #fdfdfd;
+  --foreground: #09090b;
+  --muted: #52525b;
+  --surface: #ffffff;
+  --surface-soft: #f4f4f5;
+  --border: rgba(0, 0, 0, 0.1);
+  --accent: #FF5C00;
+  --accent-strong: #FF0000;
+  --accent-blue: #0044FF;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .dark {
-  --background: #0d1117;
-  --foreground: #f2efe8;
-  --muted: #aeb6c2;
-  --surface: rgba(10, 15, 22, 0.82);
-  --surface-soft: rgba(255, 255, 255, 0.04);
-  --border: rgba(242, 239, 232, 0.12);
-  --accent: #d99b4e;
-  --accent-strong: #efb86f;
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  --background: #030712;
+  --foreground: #f8fafc;
+  --muted: #94a3b8;
+  --surface: rgba(15, 23, 42, 0.65);
+  --surface-soft: rgba(30, 41, 59, 0.5);
+  --border: rgba(255, 255, 255, 0.12);
+  --accent: #FF6A1A;
+  --accent-strong: #FF3333;
+  --accent-blue: #3366FF;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
 @theme inline {
@@ -36,18 +38,9 @@ html {
 }
 
 body {
-  background: var(--background);
+  background-color: transparent;
   color: var(--foreground);
-  font-family: "Segoe UI", "Trebuchet MS", Arial, sans-serif;
-  background-image:
-    radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 28%, transparent), transparent 30%),
-    radial-gradient(circle at top right, rgba(85, 112, 146, 0.18), transparent 28%),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--background) 92%, white 8%) 0%,
-      var(--background) 38%,
-      color-mix(in srgb, var(--background) 90%, black 10%) 100%
-    );
+  font-family: var(--font-sans), sans-serif;
 }
 
 a {
@@ -94,11 +87,11 @@ a {
   place-items: center;
   width: 2.75rem;
   height: 2.75rem;
-  border: 1px solid rgba(217, 155, 78, 0.4);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
   border-radius: 999px;
   background:
-    linear-gradient(135deg, rgba(217, 155, 78, 0.28), rgba(255, 255, 255, 0.04));
-  color: var(--accent-strong);
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 28%, transparent), rgba(255, 255, 255, 0.04));
+  color: var(--accent);
   font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 0.2em;
@@ -157,7 +150,7 @@ a {
 }
 
 .nav-cta {
-  border: 1px solid rgba(217, 155, 78, 0.45);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
   border-radius: 999px;
   padding: 0.7rem 1rem;
 }
@@ -238,30 +231,26 @@ main {
   inset: 1rem -1rem;
   border: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent);
   border-radius: 2rem;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--foreground) 4%, transparent),
-    color-mix(in srgb, var(--foreground) 1.5%, transparent)
-  );
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--foreground) 4%, transparent),
+      color-mix(in srgb, var(--foreground) 1.5%, transparent));
   z-index: -1;
 }
 
 .hero {
   display: grid;
   gap: 2rem;
-  padding-top: 3rem;
+  padding-top: 5rem;
   min-height: calc(100vh - 5rem);
   align-items: center;
 }
 
 .hero-copy,
-.hero-panel,
-.info-card,
-.side-panel,
-.contact-card,
-.contact-form-card {
+.hero-panel {
   border: 1px solid var(--border);
   background: var(--surface);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   box-shadow: var(--shadow);
 }
 
@@ -276,12 +265,6 @@ main {
   border-radius: 2rem;
   padding: 1.5rem;
   min-height: 28rem;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--accent) 12%, transparent),
-      color-mix(in srgb, var(--surface) 86%, var(--background) 14%)
-    );
 }
 
 .hero-panel-content {
@@ -310,11 +293,9 @@ main {
   inset: auto 16% 10% 16%;
   height: 30%;
   border-radius: 999px;
-  background: radial-gradient(
-    ellipse at center,
-    color-mix(in srgb, var(--accent) 45%, transparent),
-    transparent 72%
-  );
+  background: radial-gradient(ellipse at center,
+      color-mix(in srgb, var(--accent) 45%, transparent),
+      transparent 72%);
   filter: blur(36px);
 }
 
@@ -419,7 +400,6 @@ address {
 .stat-card {
   border-top: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
   padding-top: 1rem;
-  backdrop-filter: blur(10px);
 }
 
 .stat-value {
@@ -461,18 +441,23 @@ address {
 .contact-card,
 .contact-form-card {
   border-radius: 1.5rem;
-  padding: 1.35rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
   transition:
     transform 240ms cubic-bezier(0.23, 1, 0.32, 1),
     box-shadow 240ms cubic-bezier(0.23, 1, 0.32, 1),
-    border-color 240ms ease;
+    border-color 240ms ease,
+    background 240ms ease;
 }
 
 /* Card lift + glow on hover */
 .info-card:hover {
   transform: translateY(-4px);
   box-shadow:
-    0 16px 48px rgba(166, 104, 29, 0.13),
+    0 16px 48px color-mix(in srgb, var(--accent) 15%, transparent),
     0 4px 12px rgba(0, 0, 0, 0.08);
   border-color: color-mix(in srgb, var(--accent) 35%, transparent);
 }
@@ -582,11 +567,9 @@ address {
 }
 
 .equipment-card {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--foreground) 3.5%, transparent),
-    color-mix(in srgb, var(--surface) 90%, transparent)
-  );
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--foreground) 3.5%, transparent),
+      color-mix(in srgb, var(--surface) 90%, transparent));
 }
 
 .bullet-list {
@@ -705,11 +688,9 @@ address {
 }
 
 .contact-card.primary {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--accent) 18%, transparent),
-    color-mix(in srgb, var(--surface) 88%, transparent)
-  );
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--accent) 18%, transparent),
+      color-mix(in srgb, var(--surface) 88%, transparent));
 }
 
 .contact-card a {
@@ -940,10 +921,12 @@ address {
 .bar-1.open {
   transform: translateY(7px) rotate(45deg);
 }
+
 .bar-2.open {
   opacity: 0;
   width: 0;
 }
+
 .bar-3.open {
   transform: translateY(-7px) rotate(-45deg);
 }

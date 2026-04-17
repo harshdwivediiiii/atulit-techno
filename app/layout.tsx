@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AnimatedBackground } from "@/components/animated-background";
+import { Preloader } from "@/components/preloader";
+import { Footer } from "@/components/footer";
 import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: {
@@ -45,8 +51,15 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className="h-full antialiased"
     >
-      <body className="min-h-full flex flex-col">
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className={`min-h-full flex flex-col font-sans ${inter.variable}`}>
+        <Preloader />
+        <ThemeProvider>
+          <AnimatedBackground />
+          <div className="flex-1">
+            {children}
+          </div>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
