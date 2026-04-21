@@ -1,8 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
 
 type FormState = {
   name: string;
@@ -52,8 +51,7 @@ export function ContactForm() {
       setForm(initialState);
       setStatus({
         type: "success",
-        message:
-          "Inquiry sent successfully.",
+        message: "Inquiry sent successfully.",
       });
     } catch (error) {
       const message =
@@ -68,10 +66,12 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
-      <div className="form-grid">
-        <label className="field">
-          <span>Name</span>
+    <form className="space-y-5" onSubmit={handleSubmit}>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <label className="block">
+          <span className="section-kicker text-[11px] font-semibold uppercase text-muted">
+            Name
+          </span>
           <input
             required
             value={form.name}
@@ -81,10 +81,14 @@ export function ContactForm() {
             name="name"
             autoComplete="name"
             placeholder="Enter your full name"
+            className="mt-2 h-[3.25rem] w-full rounded-2xl border border-border bg-transparent px-4 text-sm text-foreground outline-none placeholder:text-foreground/38 focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
         </label>
-        <label className="field">
-          <span>Phone</span>
+
+        <label className="block">
+          <span className="section-kicker text-[11px] font-semibold uppercase text-muted">
+            Phone
+          </span>
           <input
             required
             value={form.phone}
@@ -94,12 +98,15 @@ export function ContactForm() {
             name="phone"
             autoComplete="tel"
             placeholder="+91 98XXXXXXXX"
+            className="mt-2 h-[3.25rem] w-full rounded-2xl border border-border bg-transparent px-4 text-sm text-foreground outline-none placeholder:text-foreground/38 focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
         </label>
       </div>
 
-      <label className="field">
-        <span>Address</span>
+      <label className="block">
+        <span className="section-kicker text-[11px] font-semibold uppercase text-muted">
+          Address
+        </span>
         <input
           required
           value={form.address}
@@ -108,12 +115,15 @@ export function ContactForm() {
           }
           name="address"
           autoComplete="street-address"
-          placeholder="Company or site address"
+          placeholder="Company or project site address"
+          className="mt-2 h-[3.25rem] w-full rounded-2xl border border-border bg-transparent px-4 text-sm text-foreground outline-none placeholder:text-foreground/38 focus:border-primary focus:ring-2 focus:ring-primary/20"
         />
       </label>
 
-      <label className="field">
-        <span>Project details</span>
+      <label className="block">
+        <span className="section-kicker text-[11px] font-semibold uppercase text-muted">
+          Project Details
+        </span>
         <textarea
           required
           value={form.details}
@@ -122,22 +132,29 @@ export function ContactForm() {
           }
           name="details"
           rows={6}
-          placeholder="Describe fabrication requirements, quantity, drawings, or delivery timeline"
+          placeholder="Describe tonnage, drawings, timelines, fabrication scope, or dispatch constraints"
+          className="mt-2 w-full rounded-[1.4rem] border border-border bg-transparent px-4 py-4 text-sm leading-7 text-foreground outline-none placeholder:text-foreground/38 focus:border-primary focus:ring-2 focus:ring-primary/20"
         />
       </label>
 
-      <div className="form-actions">
-        <Button className="submit-button" disabled={isSubmitting} type="submit">
-          {isSubmitting ? "Sending..." : "Send inquiry"}
-        </Button>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <button
+          disabled={isSubmitting}
+          type="submit"
+          className="gradient-neon-bg inline-flex min-h-[3.25rem] items-center justify-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold text-primary-foreground shadow-neon-blue hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {isSubmitting ? "Sending..." : "Send Inquiry"}
+          <ArrowUpRight size={16} />
+        </button>
       </div>
 
       {status.message ? (
         <p
-          className={
-            status.type === "success" ? "form-status success" : "form-status error"
-          }
           role="status"
+          className={`rounded-2xl border px-4 py-3 text-sm ${status.type === "success"
+              ? "border-emerald-400/25 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+              : "border-rose-400/25 bg-rose-500/10 text-rose-600 dark:text-rose-300"
+            }`}
         >
           {status.message}
         </p>

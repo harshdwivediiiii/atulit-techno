@@ -3,14 +3,21 @@ export type NavItem = {
   label: string;
 };
 
-export type Stat = {
+export type HeroStat = {
   label: string;
   value: string;
   detail: string;
 };
 
-export type Highlight = {
+export type SectorCard = {
   title: string;
+  description: string;
+  accent: "blue" | "orange" | "mixed";
+};
+
+export type TimelineMilestone = {
+  year: string;
+  label: string;
   description: string;
 };
 
@@ -20,14 +27,38 @@ export type ProcessStep = {
   description: string;
 };
 
+export type FeaturedProject = {
+  title: string;
+  vendor: string;
+  tag: "Infrastructure" | "Power" | "Smelter";
+  description: string;
+  image: string;
+};
+
+export type RecentDelivery = {
+  client: string;
+  item: string;
+  quantity: string;
+  completedAt: string;
+};
+
+export type Benefit = {
+  title: string;
+  description: string;
+  accent: "blue" | "orange";
+};
+
+export type Metric = {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+  description: string;
+};
+
 export type TableRow = {
   label: string;
   value: string;
-};
-
-export type EquipmentGroup = {
-  title: string;
-  items: string[];
 };
 
 export type Director = {
@@ -44,57 +75,90 @@ export type ContactPerson = {
 export const company = {
   name: "Atulit Technology Private Limited",
   shortName: "Atulit Technology",
-  tagline: "Steel fabrication built for demanding industrial projects.",
+  displayWordmark: "ATULIT TECHNOLOGY",
+  tagline: "Engineering strength. Delivering precision.",
   description:
-    "Atulit Technology Pvt Ltd delivers end-to-end steel fabrication solutions for mining, agriculture, infrastructure, and heavy industrial applications with a strong focus on quality, competitive costing, and dependable delivery.",
+    "Atulit Technology Pvt Ltd delivers end-to-end steel fabrication for mining, agriculture, infrastructure, and heavy industrial projects with disciplined planning, quality-controlled production, and dependable dispatch execution from Bhilai.",
   location: "Bhilai, Chhattisgarh, India",
   address:
     "Mouja Jamul PHN 18/01, Near Rail Engineering Park, Shivpuri Jamul, Hathkhoj, Bhilai, Dist-Durg, Chhattisgarh 490024",
   emailPrimary: "atulittechno@gmail.com",
   emailSecondary: "atulittechno@gmail.com",
+  established: "2009",
 } as const;
 
 export const navItems: NavItem[] = [
   { href: "#about", label: "About" },
   { href: "#process", label: "Process" },
-  { href: "#capabilities", label: "Capabilities" },
+  { href: "#projects", label: "Projects" },
+  { href: "#infrastructure", label: "Infrastructure" },
   { href: "#team", label: "Leadership" },
   { href: "#contact", label: "Contact" },
 ];
 
-export const heroStats: Stat[] = [
+export const heroStats: HeroStat[] = [
   {
-    label: "Production capacity",
-    value: "100-250 MT/month",
-    detail: "Delivered as per drawing specifications.",
+    label: "Years in fabrication",
+    value: "15+",
+    detail: "Operating since 2009 with project-led execution roots in Bhilai.",
   },
   {
-    label: "Site footprint",
-    value: "5 acres",
-    detail: "Open land with developed fabrication and utility areas.",
+    label: "Approx. turnover",
+    value: "Rs 10 Cr",
+    detail: "Growth backed by infrastructure setup and fabrication specialization.",
   },
   {
-    label: "Operating strength",
-    value: "30-60 people",
-    detail: "Core team plus subcontractor support based on project load.",
+    label: "Monthly capacity",
+    value: "100-250 MT",
+    detail: "Medium and heavy structural fabrication delivered to drawing.",
   },
 ];
 
-export const whyAtulit: Highlight[] = [
+export const sectorCards: SectorCard[] = [
   {
-    title: "Central India execution advantage",
+    title: "Mining",
     description:
-      "The Bhilai location helps the team dispatch fabricated structures quickly across project sites with shorter turnaround times.",
+      "Heavy-duty fabricated structures, conveyors, platforms, and supports engineered for demanding mining environments.",
+    accent: "blue",
   },
   {
-    title: "Raw material access close to source",
+    title: "Agriculture",
     description:
-      "The facility benefits from proximity to Bhilai Steel Plant and Jindal Steel Plant, supporting procurement agility and manufacturing continuity.",
+      "Precision steel solutions for sheds, storage systems, and industrial agricultural infrastructure.",
+    accent: "orange",
   },
   {
-    title: "Custom fabrication experience",
+    title: "Infrastructure",
     description:
-      "The company works across structural steel products for mining, agriculture, infrastructure, and adjacent industrial requirements.",
+      "Plant structures, industrial frameworks, and project steel packages supplied through execution-focused fabrication.",
+    accent: "mixed",
+  },
+];
+
+export const timelineMilestones: TimelineMilestone[] = [
+  {
+    year: "2009",
+    label: "Fabrication journey begins",
+    description:
+      "The group expanded from manpower support work into fabrication projects with a workshop-led operating model.",
+  },
+  {
+    year: "2014",
+    label: "Major plant-linked orders",
+    description:
+      "Execution matured through larger industrial supply requirements and tighter project coordination.",
+  },
+  {
+    year: "2019",
+    label: "Multi-sector expansion",
+    description:
+      "Fabrication capability broadened across mining, agriculture, infrastructure, and related industrial scopes.",
+  },
+  {
+    year: "2024",
+    label: "5-acre facility strength",
+    description:
+      "The company profile highlights a developed fabrication base and production capacity of up to 250 MT per month.",
   },
 ];
 
@@ -103,95 +167,139 @@ export const processSteps: ProcessStep[] = [
     step: "01",
     title: "Design preparation",
     description:
-      "Review project intent, fabrication drawings, and dimensional requirements before production begins.",
+      "Drawings, bill of materials, fabrication intent, and project constraints are aligned before production release.",
   },
   {
     step: "02",
     title: "Material acquisition",
     description:
-      "Source raw steel and supporting inputs based on specification, availability, and project schedule.",
+      "Steel and supporting inputs are sourced against project specifications, mill availability, and delivery priorities.",
   },
   {
     step: "03",
     title: "Cutting and drilling",
     description:
-      "Prepare members through precision cutting, hole-making, and core fabrication operations.",
+      "Members are prepared through precision cutting, hole-making, fit-up preparation, and fabrication sequencing.",
   },
   {
     step: "04",
     title: "Bending and welding",
     description:
-      "Shape and join fabricated elements using welding setups suited to the application and section size.",
+      "Skilled fabrication teams shape and join steel components into assembly-ready structural elements.",
   },
   {
     step: "05",
     title: "Quality checks",
     description:
-      "Inspect fabrication stages to maintain fit-up accuracy, weld quality, and drawing compliance.",
+      "Dimensional checks, weld review, and stage-wise inspection help maintain drawing compliance throughout production.",
   },
   {
     step: "06",
     title: "Finishing",
     description:
-      "Complete grinding, blasting, painting, and final surface preparation required for delivery.",
+      "Grinding, blasting, priming, painting, and surface preparation are completed to project-specific requirements.",
   },
   {
     step: "07",
     title: "Delivery and installation support",
     description:
-      "Coordinate dispatch and provide practical execution support through the final handover phase.",
+      "Dispatch planning and execution support are coordinated to help fabricated packages move smoothly to site.",
   },
 ];
 
-export const benefits: Highlight[] = [
+export const featuredProjects: FeaturedProject[] = [
+  {
+    title: "S G F Infra Private Limited",
+    vendor: "Zetfab India Private Limited",
+    tag: "Infrastructure",
+    description:
+      "Fabricated structural steelwork for large-scale civil infrastructure delivery packages.",
+    image: "/assets/atulit/project-sgf.jpg",
+  },
+  {
+    title: "NTPC Simhadri",
+    vendor: "Zetfab India Private Limited",
+    tag: "Power",
+    description:
+      "Heavy steel structures supplied for the NTPC Simhadri thermal power station.",
+    image: "/assets/atulit/project-ntpc.jpg",
+  },
+  {
+    title: "NTPC Sipat",
+    vendor: "Zetfab India Private Limited",
+    tag: "Power",
+    description:
+      "Plant-grade fabrication support for the NTPC Sipat super thermal power project.",
+    image: "/assets/atulit/project-ntpc.jpg",
+  },
+  {
+    title: "BALCO 410 kt/a Aluminium Smelter",
+    vendor: "Vrinda Engineering / Larsen & Toubro Ltd.",
+    tag: "Smelter",
+    description:
+      "Structural fabrication for the aluminium smelter expansion package at BALCO.",
+    image: "/assets/atulit/project-balco.jpg",
+  },
+];
+
+export const recentDeliveries: RecentDelivery[] = [
+  { client: "ADANI", item: "Fabrication structure", quantity: "116.911 MT", completedAt: "March 2026" },
+  { client: "IOCL", item: "Fabrication structure", quantity: "469 MT", completedAt: "March 2026" },
+  { client: "KEC", item: "Fabrication structure", quantity: "122 MT", completedAt: "February 2026" },
+  { client: "JSSL", item: "Fabrication structure", quantity: "245 MT", completedAt: "January 2026" },
+  { client: "NMDC", item: "Fabrication structure", quantity: "321 MT", completedAt: "October 2025" },
+  { client: "NMDC", item: "Fabrication structure", quantity: "114 MT", completedAt: "October 2025" },
+];
+
+export const benefits: Benefit[] = [
   {
     title: "Durability",
     description:
-      "Fabricated steel offers long service life, dependable structural performance, and low maintenance in demanding environments.",
+      "Engineered steel sections and fabrication workflows are built for long-term industrial service conditions.",
+    accent: "blue",
   },
   {
-    title: "Cost-effectiveness",
+    title: "Cost-effective execution",
     description:
-      "Stable material economics and optimized fabrication planning help control project cost without compromising utility.",
+      "Material planning, fabrication sequencing, and facility utilization help control avoidable project cost.",
+    accent: "orange",
   },
   {
     title: "Sustainability",
     description:
-      "Steel is highly recyclable, making it a practical choice for both environmental and economic sustainability.",
+      "Steel remains highly recyclable, supporting practical environmental and lifecycle benefits across projects.",
+    accent: "blue",
   },
   {
-    title: "Safety",
+    title: "Safety-focused delivery",
     description:
-      "Steel structures are easier to clean, resistant to mold, and suited to industrial environments with controlled fabrication standards.",
+      "Structured fabrication processes and trained manpower support safer production and dispatch operations.",
+    accent: "orange",
   },
 ];
 
-export const companyStory = [
-  "Atulit Technology works in fabricated steel with an unwavering dedication to quality and on-time delivery.",
-  "The group originated in Bhilai as K P Fabricators, initially supplying manpower to steel and metal industries before expanding into fabrication projects in 2009.",
-  "By 2024, the promoters had focused fully on fabrication, reaching an approximate turnover of Rs 10 crore while continuing to improve cost planning, design optimization, equipment balancing, and execution oversight.",
-];
-
-export const solutions: Highlight[] = [
+export const infrastructureMetrics: Metric[] = [
   {
-    title: "Twisted and complex steel forms",
+    value: 5,
+    suffix: " Acre",
+    label: "Production land",
     description:
-      "Fabrication capability aimed at turning difficult product geometries into production-ready structural outcomes.",
+      "Open land with developed fabrication, utility, blasting, painting, and raw material handling areas.",
   },
   {
-    title: "Timely supply of products",
+    value: 250,
+    prefix: "100-",
+    suffix: " MT",
+    label: "Monthly output",
     description:
-      "An execution-focused manufacturing process designed to keep delivery commitments practical and dependable.",
+      "Production capacity of 100 to 250 metric tonnes per month according to drawing specification.",
   },
   {
-    title: "Economical manufacturing",
+    value: 60,
+    prefix: "30-",
+    label: "Operating manpower",
     description:
-      "Operational planning and facility utilization are used to reduce unnecessary manufacturing cost.",
-  },
-  {
-    title: "Consistent finished quality",
-    description:
-      "Inspection and finishing workflows are built around maintaining a high standard in delivered output.",
+      "Core workforce strength supported by subcontractor teams based on project load and execution intensity.",
   },
 ];
 
@@ -218,72 +326,6 @@ export const infrastructure: TableRow[] = [
     value: "Medium and heavy structural fabrication with raw material support",
   },
   { label: "Power source", value: "150 HP" },
-];
-
-export const equipmentGroups: EquipmentGroup[] = [
-  {
-    title: "Cutting",
-    items: [
-      "Pug cutting with track: 10 units",
-      "Hand torch cutting sets: 15 units",
-    ],
-  },
-  {
-    title: "Welding",
-    items: [
-      "Arc machine 200 amp: 5 units",
-      "Arc machine 300 amp: 5 units",
-      "Arc machine 400 amp: 5 units",
-      "MIG machine: 12 units",
-    ],
-  },
-  {
-    title: "Drilling",
-    items: [
-      "Magnetic core cutter drill: 10 units",
-      "Radial drill: 2 units",
-    ],
-  },
-  {
-    title: "Material handling and finishing",
-    items: [
-      "ACE Hydra 15 MT capacity: 2 units",
-      "Grinding machine AG7: 15 units",
-      "Grinding machine AG5: 10 units",
-      "Grinding machine AG4: 5 units",
-      "Pencil grinder machine: 2 units",
-    ],
-  },
-  {
-    title: "Blasting and painting",
-    items: [
-      "Atlas Marg 40 HP screw compressor with hopper and receiver: 1 set",
-      "Port gun and pneumatic airless spray gun: 1 set",
-    ],
-  },
-];
-
-export const marketChallenges: Highlight[] = [
-  {
-    title: "Inflation pressure",
-    description:
-      "Metal fabricators must balance cost increases with quality, customer retention, and commercial viability.",
-  },
-  {
-    title: "Supply uncertainty",
-    description:
-      "Import volatility and delayed inputs make in-stock machinery and dependable sourcing more important.",
-  },
-  {
-    title: "Staffing and skills",
-    description:
-      "Industrial growth depends on attracting trained operators, technical talent, and reliable fabrication crews.",
-  },
-  {
-    title: "Customization and delivery",
-    description:
-      "Customers still expect tailored parts and fast turnaround, even when supply chains remain under pressure.",
-  },
 ];
 
 export const directors: Director[] = [
@@ -314,9 +356,6 @@ export const workforceStrengths = [
   "Certified welding supervisors",
   "Quality inspectors",
 ];
-
-export const projectStatement =
-  "The company profile highlights ongoing project capability, but no named case studies or client references are provided. The website presents this as readiness for project-based execution rather than inventing a portfolio.";
 
 export const contactPeople: ContactPerson[] = [
   { name: "Ashish Sharma", phone: "+91-7999670177" },
