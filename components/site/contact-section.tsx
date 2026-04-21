@@ -1,134 +1,119 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+"use client";
 
+import { Mail, MapPin, Phone } from "lucide-react";
 import { company, contactPeople } from "@/app/content";
 import { ContactForm } from "@/components/contact-form";
-import { Reveal } from "@/components/reveal";
 
 export function ContactSection() {
   const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    company.address,
+    company.address
   )}`;
 
   return (
-    <section id="contact" className="relative py-24 sm:py-28">
-      <div className="glow-blue absolute -left-20 top-0 h-[26rem] w-[26rem] rounded-full blur-3xl" />
-      <div className="glow-orange absolute -bottom-24 right-0 h-[30rem] w-[30rem] rounded-full blur-3xl" />
+    <section id="contact" className="py-24 bg-background">
+      <div className="max-w-7xl mx-auto px-6">
 
-      <div className="site-container relative">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(20rem,1.1fr)]">
-          <Reveal className="space-y-8">
-            <div>
-              <p className="section-kicker text-xs font-semibold uppercase text-secondary">
-                Contact
-              </p>
-              <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
-                Let&apos;s build <span className="text-gradient-neon">something strong.</span>
-              </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-foreground/72">
-                Share your fabrication requirement, scope, drawings, or timeline. The form below
-                still submits through your existing backend contact workflow.
-              </p>
-            </div>
+        {/* HEADER */}
+        <div className="max-w-2xl mb-16">
+          <p className="text-sm font-semibold text-primary uppercase tracking-wider">
+            Contact Us
+          </p>
+          <h2 className="mt-4 text-4xl sm:text-5xl font-bold leading-tight">
+            Let’s build something{" "}
+            <span className="text-primary">strong & reliable</span>
+          </h2>
+          <p className="mt-6 text-lg text-muted-foreground">
+            Share your requirements, drawings, or timelines. Our team will get
+            back to you with precise solutions.
+          </p>
+        </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <article className="glass-panel rounded-[1.6rem] p-5 sm:col-span-2">
-                <div className="flex items-start gap-4">
-                  <span className="glass-panel-strong inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl">
-                    <Mail size={18} className="text-primary" />
-                  </span>
-                  <div>
-                    <p className="section-kicker text-[11px] font-semibold uppercase text-muted">
-                      Email
-                    </p>
-                    <a
-                      href={`mailto:${company.emailPrimary}`}
-                      className="mt-2 block text-lg font-semibold text-foreground hover:text-primary"
-                    >
-                      {company.emailPrimary}
-                    </a>
-                    <a
-                      href={`mailto:${company.emailSecondary}`}
-                      className="mt-1 block text-sm text-foreground/68 hover:text-primary"
-                    >
-                      {company.emailSecondary}
-                    </a>
-                  </div>
-                </div>
-              </article>
+        {/* MAIN GRID */}
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
 
-              <article className="glass-panel rounded-[1.6rem] p-5">
-                <div className="flex items-start gap-4">
-                  <span className="glass-panel-strong inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl">
-                    <Phone size={18} className="text-secondary" />
-                  </span>
-                  <div>
-                    <p className="section-kicker text-[11px] font-semibold uppercase text-muted">
-                      Phone
-                    </p>
-                    <ul className="mt-2 space-y-2 text-sm text-foreground/72">
-                      {contactPeople.map((person) => (
-                        <li key={person.phone}>
-                          <div className="font-medium text-foreground">{person.name}</div>
-                          <a href={`tel:${person.phone}`} className="hover:text-secondary">
-                            {person.phone}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </article>
+          {/* LEFT SIDE - INFO */}
+          <div className="space-y-6">
 
-              <article className="glass-panel rounded-[1.6rem] p-5">
-                <div className="flex items-start gap-4">
-                  <span className="glass-panel-strong inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl">
-                    <MapPin size={18} className="text-primary" />
-                  </span>
-                  <div>
-                    <p className="section-kicker text-[11px] font-semibold uppercase text-muted">
-                      Facility
-                    </p>
-                    <address className="mt-2 not-italic text-sm leading-7 text-foreground/72">
-                      {company.address}
-                    </address>
-                    <a
-                      href={mapHref}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-4 inline-flex rounded-full border border-border px-4 py-2 text-sm font-semibold text-foreground hover:border-primary hover:text-primary"
-                    >
-                      Open in Maps
-                    </a>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.08}>
-            <div className="glass-panel-strong rounded-[2rem] p-6 shadow-neon-blue sm:p-8">
-              <p className="section-kicker text-xs font-semibold uppercase text-primary">
-                Send Inquiry
-              </p>
-              <h3 className="mt-3 text-2xl font-black sm:text-3xl">
-                Start the fabrication conversation.
-              </h3>
-              <p className="mt-4 text-sm leading-7 text-foreground/68">
-                Fill in the requirement details once. We&apos;ll route it through your existing
-                contact API so nothing in the backend flow changes.
-              </p>
-              <div className="mt-8">
-                <ContactForm />
+            {/* EMAIL */}
+            <div className="flex gap-4 p-6 border rounded-xl hover:shadow-md transition">
+              <div className="p-3 bg-primary/10 rounded-lg">
+                <Mail className="text-primary" size={20} />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Email</p>
+                <a href={`mailto:${company.emailPrimary}`} className="font-semibold hover:text-primary">
+                  {company.emailPrimary}
+                </a>
+                <p className="text-sm text-muted-foreground">
+                  {company.emailSecondary}
+                </p>
               </div>
             </div>
-          </Reveal>
+
+            {/* PHONE */}
+            <div className="flex gap-4 p-6 border rounded-xl hover:shadow-md transition">
+              <div className="p-3 bg-secondary/10 rounded-lg">
+                <Phone className="text-secondary" size={20} />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Phone</p>
+                {contactPeople.map((person) => (
+                  <div key={person.phone}>
+                    <p className="font-medium">{person.name}</p>
+                    <a href={`tel:${person.phone}`} className="text-sm hover:text-secondary">
+                      {person.phone}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ADDRESS */}
+            <div className="flex gap-4 p-6 border rounded-xl hover:shadow-md transition">
+              <div className="p-3 bg-primary/10 rounded-lg">
+                <MapPin className="text-primary" size={20} />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Facility</p>
+                <p className="text-sm mt-1">{company.address}</p>
+
+                <a
+                  href={mapHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-block mt-4 text-sm font-medium text-primary hover:underline"
+                >
+                  View on Google Maps →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE - FORM */}
+          <div className="border rounded-2xl p-8 shadow-sm bg-card">
+            <p className="text-sm font-semibold text-primary uppercase">
+              Send Inquiry
+            </p>
+
+            <h3 className="mt-3 text-2xl font-bold">
+              Start your project discussion
+            </h3>
+
+            <p className="mt-3 text-sm text-muted-foreground">
+              Fill the form once. Our team will contact you shortly.
+            </p>
+
+            <div className="mt-6">
+              <ContactForm />
+            </div>
+          </div>
         </div>
       </div>
 
+      {/* FLOATING CALL BUTTON */}
       <a
         href={`tel:${contactPeople[0]?.phone ?? ""}`}
-        className="gradient-neon-bg fixed bottom-5 right-5 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full text-primary-foreground shadow-neon-blue hover:scale-105 md:bottom-8 md:right-8"
-        aria-label={`Call ${contactPeople[0]?.name ?? company.shortName}`}
+        className="fixed bottom-6 right-6 h-14 w-14 flex items-center justify-center rounded-full bg-primary text-white shadow-lg hover:scale-105 transition"
       >
         <Phone size={20} />
       </a>

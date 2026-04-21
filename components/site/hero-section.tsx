@@ -1,9 +1,10 @@
 import Image from "next/image";
 
 import { company, heroStats } from "@/app/content";
+import heroBg from "@/public/assets/atulit/hero-bg.jpg";
 import { Reveal } from "@/components/reveal";
 import { BeamScene } from "@/components/site/beam-scene";
-import { Sparks } from "@/components/site/sparks";
+import { HeroEffects } from "@/components/site/hero-effects";
 
 export function HeroSection() {
   return (
@@ -13,7 +14,7 @@ export function HeroSection() {
     >
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/assets/atulit/hero-bg.jpg"
+          src={heroBg}
           alt="Atulit fabrication workshop"
           fill
           preload
@@ -25,7 +26,7 @@ export function HeroSection() {
         <div className="glow-orange absolute -bottom-24 right-0 h-[34rem] w-[34rem] rounded-full blur-3xl" />
       </div>
 
-      <Sparks />
+      <HeroEffects />
 
       <div className="site-container relative">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(22rem,0.9fr)]">

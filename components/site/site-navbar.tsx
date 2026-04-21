@@ -5,6 +5,7 @@ import { useEffect, useEffectEvent, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
 import { company, navItems } from "@/app/content";
+import logoImage from "@/public/assets/atulit/logo.png";
 import { ModeToggle } from "@/components/mode-toggle";
 
 export function SiteNavbar() {
@@ -44,7 +45,7 @@ export function SiteNavbar() {
             <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/10">
               <div className="glow-orange absolute inset-0 rounded-2xl opacity-50 blur-xl transition-opacity group-hover:opacity-80" />
               <Image
-                src="/assets/atulit/logo.png"
+                src={logoImage}
                 alt={company.shortName}
                 width={36}
                 height={36}

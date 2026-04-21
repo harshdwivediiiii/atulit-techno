@@ -1,3 +1,9 @@
+import type { StaticImageData } from "next/image";
+
+import projectBalco from "@/public/assets/atulit/project-balco.jpg";
+import projectNtpc from "@/public/assets/atulit/project-ntpc.jpg";
+import projectSgf from "@/public/assets/atulit/project-sgf.jpg";
+
 export type NavItem = {
   href: string;
   label: string;
@@ -32,7 +38,7 @@ export type FeaturedProject = {
   vendor: string;
   tag: "Infrastructure" | "Power" | "Smelter";
   description: string;
-  image: string;
+  image: StaticImageData;
 };
 
 export type RecentDelivery = {
@@ -214,7 +220,7 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "Infrastructure",
     description:
       "Fabricated structural steelwork for large-scale civil infrastructure delivery packages.",
-    image: "/assets/atulit/project-sgf.jpg",
+    image: projectSgf,
   },
   {
     title: "NTPC Simhadri",
@@ -222,7 +228,7 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "Power",
     description:
       "Heavy steel structures supplied for the NTPC Simhadri thermal power station.",
-    image: "/assets/atulit/project-ntpc.jpg",
+    image: projectNtpc,
   },
   {
     title: "NTPC Sipat",
@@ -230,7 +236,7 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "Power",
     description:
       "Plant-grade fabrication support for the NTPC Sipat super thermal power project.",
-    image: "/assets/atulit/project-ntpc.jpg",
+    image: projectNtpc,
   },
   {
     title: "BALCO 410 kt/a Aluminium Smelter",
@@ -238,7 +244,7 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "Smelter",
     description:
       "Structural fabrication for the aluminium smelter expansion package at BALCO.",
-    image: "/assets/atulit/project-balco.jpg",
+    image: projectBalco,
   },
 ];
 

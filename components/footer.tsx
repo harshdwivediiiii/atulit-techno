@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { company, navItems } from "@/app/content";
+import logoImage from "@/public/assets/atulit/logo.png";
 
 export function Footer() {
   return (
@@ -10,7 +11,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-3">
               <Image
-                src="/assets/atulit/logo.png"
+                src={logoImage}
                 alt={company.shortName}
                 width={48}
                 height={48}

@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
 import { infrastructure, infrastructureMetrics } from "@/app/content";
+import infrastructureImage from "@/public/assets/atulit/infrastructure.jpg";
 import { Reveal } from "@/components/reveal";
 
 type CounterProps = {
@@ -58,7 +59,7 @@ export function InfrastructureSection() {
     <section id="infrastructure" className="relative isolate overflow-hidden py-24 sm:py-28">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/assets/atulit/infrastructure.jpg"
+          src={infrastructureImage}
           alt="Atulit facility infrastructure"
           fill
           sizes="100vw"
