@@ -326,7 +326,7 @@ export const infrastructure: TableRow[] = [
     value: "1 acre from the site area, approximately 43,500 sq. ft",
   },
   { label: "Production capacity", value: "100-250 MT per month as per drawing specification" },
-  { label: "Manpower", value: "30-60 personnel including subcontractor support" },
+  { label: "Manpower", value: "80-100 personnel including subcontractor support" },
   {
     label: "Manufacturing capability",
     value: "Medium and heavy structural fabrication with raw material support",
