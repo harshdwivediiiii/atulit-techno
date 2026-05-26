@@ -5,9 +5,10 @@ import { company, contactPeople } from "@/app/content";
 import { ContactForm } from "@/components/contact-form";
 
 export function ContactSection() {
-  const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    company.address
-  )}`;
+  const mapHref =
+    "https://www.google.com/maps/place/Atulit+Technology+Pvt+Ltd/@21.2404077,81.3965589,17z/data=!3m1!4b1!4m6!3m5!1s0x3a2923c43236a41f:0x47bb5da1cf72670c!8m2!3d21.2404027!4d81.3991338!16s%2Fg%2F11ywp240ch";
+  const mapEmbedSrc =
+    "https://www.google.com/maps?q=Atulit%20Technology%20Pvt%20Ltd%2C%20Bhilai%2C%20Chhattisgarh&ll=21.2404027,81.3991338&z=17&output=embed";
 
   return (
     <section id="contact" className="py-24 bg-background">
@@ -86,6 +87,18 @@ export function ContactSection() {
                   View on Google Maps →
                 </a>
               </div>
+            </div>
+
+            {/* MAP */}
+            <div className="overflow-hidden border rounded-xl bg-card shadow-sm">
+              <iframe
+                src={mapEmbedSrc}
+                title="Atulit Technology Pvt Ltd location map"
+                className="h-[22rem] w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </div>
           </div>
 

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { startTransition, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-import { featuredProjects, recentDeliveries } from "@/app/content";
+import { featuredProjects, projectGallery, recentDeliveries } from "@/app/content";
 import { Reveal } from "@/components/reveal";
 
 const filters = ["All", "Infrastructure", "Power", "Smelter"] as const;
@@ -87,6 +87,40 @@ export function ProjectsSection() {
               </article>
             </Reveal>
           ))}
+        </div>
+
+        <div className="mt-16">
+          <Reveal className="max-w-2xl">
+            <p className="section-kicker text-xs font-semibold uppercase text-primary">
+              Project Gallery
+            </p>
+            <h3 className="mt-3 text-3xl font-black leading-tight sm:text-4xl">
+              Fabrication work from the shop floor to dispatch.
+            </h3>
+          </Reveal>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {projectGallery.map((item, index) => (
+              <Reveal key={item.title} delay={index * 0.035}>
+                <article className="glass-panel group overflow-hidden rounded-[1.4rem]">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/88 via-background/12 to-transparent" />
+                  </div>
+                  <div className="p-5">
+                    <h4 className="text-lg font-bold">{item.title}</h4>
+                    <p className="mt-2 text-sm leading-6 text-foreground/66">{item.description}</p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
         <Reveal className="mt-16" delay={0.12}>

@@ -1,6 +1,21 @@
 import type { StaticImageData } from "next/image";
 
 import projectBalco from "@/public/assets/atulit/project-balco.jpg";
+import projectGallery01 from "@/public/assets/atulit/project-gallery-01.jpg";
+import projectGallery02 from "@/public/assets/atulit/project-gallery-02.jpg";
+import projectGallery03 from "@/public/assets/atulit/project-gallery-03.jpg";
+import projectGallery04 from "@/public/assets/atulit/project-gallery-04.jpg";
+import projectGallery05 from "@/public/assets/atulit/project-gallery-05.jpg";
+import projectGallery06 from "@/public/assets/atulit/project-gallery-06.jpg";
+import projectGallery07 from "@/public/assets/atulit/project-gallery-07.jpg";
+import projectGallery08 from "@/public/assets/atulit/project-gallery-08.jpg";
+import projectGallery09 from "@/public/assets/atulit/project-gallery-09.jpg";
+import projectGallery10 from "@/public/assets/atulit/project-gallery-10.jpg";
+import projectGallery11 from "@/public/assets/atulit/project-gallery-11.jpg";
+import projectGallery12 from "@/public/assets/atulit/project-gallery-12.jpg";
+import projectGallery13 from "@/public/assets/atulit/project-gallery-13.jpg";
+import projectGallery14 from "@/public/assets/atulit/project-gallery-14.jpg";
+import projectGallery15 from "@/public/assets/atulit/project-gallery-15.jpg";
 import projectNtpc from "@/public/assets/atulit/project-ntpc.jpg";
 import projectSgf from "@/public/assets/atulit/project-sgf.jpg";
 
@@ -37,6 +52,12 @@ export type FeaturedProject = {
   title: string;
   vendor: string;
   tag: "Infrastructure" | "Power" | "Smelter";
+  description: string;
+  image: StaticImageData;
+};
+
+export type ProjectGalleryImage = {
+  title: string;
   description: string;
   image: StaticImageData;
 };
@@ -248,6 +269,84 @@ export const featuredProjects: FeaturedProject[] = [
   },
 ];
 
+export const projectGallery: ProjectGalleryImage[] = [
+  {
+    title: "Fabrication bay overview",
+    description: "Workshop floor view showing steel members staged for industrial fabrication.",
+    image: projectGallery01,
+  },
+  {
+    title: "Structural steel assembly",
+    description: "Large fabricated sections prepared for fit-up, inspection, and dispatch readiness.",
+    image: projectGallery02,
+  },
+  {
+    title: "Yard material handling",
+    description: "Open yard capacity used for raw material movement and project-wise segregation.",
+    image: projectGallery03,
+  },
+  {
+    title: "Heavy member fabrication",
+    description: "Built-up steel components aligned for welding and dimensional quality checks.",
+    image: projectGallery04,
+  },
+  {
+    title: "Industrial steel package",
+    description: "Fabricated steelwork grouped for large plant and infrastructure requirements.",
+    image: projectGallery05,
+  },
+  {
+    title: "Production fit-up work",
+    description: "Shop-floor preparation of structural assemblies before finishing and coating.",
+    image: projectGallery06,
+  },
+  {
+    title: "Project steel staging",
+    description: "Completed and in-progress members organized across the fabrication yard.",
+    image: projectGallery07,
+  },
+  {
+    title: "Workshop fabrication line",
+    description: "Fabrication activity supported by open handling space and shed-side operations.",
+    image: projectGallery08,
+  },
+  {
+    title: "Finished structural components",
+    description: "Fabricated sections ready for project coordination, loading, and delivery.",
+    image: projectGallery09,
+  },
+  {
+    title: "Assembly quality control",
+    description: "Steel assemblies prepared for stage-wise checking before final finishing.",
+    image: projectGallery10,
+  },
+  {
+    title: "Dispatch-ready structures",
+    description: "Project steel members arranged for safe handling and onward movement.",
+    image: projectGallery11,
+  },
+  {
+    title: "Plant structure fabrication",
+    description: "Heavy industrial components fabricated for plant-linked execution scopes.",
+    image: projectGallery12,
+  },
+  {
+    title: "Yard production support",
+    description: "Outdoor production and storage space supporting medium and heavy fabrication.",
+    image: projectGallery13,
+  },
+  {
+    title: "Fabricated steel inventory",
+    description: "Completed structural steel sections stored for project-wise dispatch planning.",
+    image: projectGallery14,
+  },
+  {
+    title: "Site-ready fabrication work",
+    description: "Industrial fabrication output prepared for installation and project handover support.",
+    image: projectGallery15,
+  },
+];
+
 export const recentDeliveries: RecentDelivery[] = [
   { client: "ADANI", item: "Fabrication structure", quantity: "116.911 MT", completedAt: "March 2026" },
   { client: "IOCL", item: "Fabrication structure", quantity: "469 MT", completedAt: "March 2026" },
@@ -301,8 +400,8 @@ export const infrastructureMetrics: Metric[] = [
       "Production capacity of 100 to 250 metric tonnes per month according to drawing specification.",
   },
   {
-    value: 60,
-    prefix: "30-",
+    value: 90,
+    prefix: "60-",
     label: "Operating manpower",
     description:
       "Core workforce strength supported by subcontractor teams based on project load and execution intensity.",
